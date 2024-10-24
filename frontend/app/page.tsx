@@ -1,6 +1,4 @@
 import { auth } from "@/auth";
-import { SignIn } from "./components/auth/signin-button";
-import { SignOut } from "./components/auth/signout-button";
 import ChatSection from "./components/chat-section";
 
 export default async function Home() {
@@ -10,11 +8,10 @@ export default async function Home() {
     <main className="w-screen flex justify-center items-center">
       <div className="py-10 space-y-2 lg:space-y-10 w-[90%] lg:w-[60rem]">
         <h1 className="text-4xl font-bold">Laatukäsikirja-chatbot</h1>
-        <SignIn/>
-        <SignOut/>
         <div className="h-[65vh] flex">
-        {session ? <ChatSection /> : <div>kirjaudu sisään...</div>}
-
+          {session ? <ChatSection /> : (
+            <p className="">Tervetuloa käyttämään Laatukäsikirja chatbottia. Aloita käyttö kirjautumalla ensin sisään.</p>
+            )}
         </div>
       </div>
     </main>

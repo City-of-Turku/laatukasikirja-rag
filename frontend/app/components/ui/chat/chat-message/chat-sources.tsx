@@ -38,7 +38,7 @@ export function ChatSources({ data }: { data: SourceData }) {
 
   return (
     <div className="space-y-2 text-sm">
-      <div className="font-semibold text-lg">Sources:</div>
+      <div className="font-semibold text-lg">Lähteet:</div>
       <div className="flex gap-3 flex-wrap">
         {documents.map((document) => {
           return <DocumentInfo key={document.url} document={document} />;

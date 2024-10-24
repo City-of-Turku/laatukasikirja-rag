@@ -95,6 +95,10 @@
       radial-gradient(at 8% 40%, rgba(251, 218, 239, 0.46) 0, transparent 50%);
   }
 
+  .background-color {
+    background-color: lightblue;
+  }
+
   @keyframes fadeIn {
     0% {
       opacity: 0;

@@ -14,7 +14,17 @@ Second, generate the embeddings of the documents in the `./data` directory (if t
 npm run generate
 ```
 
-Third, run the development server:
+Create a `.env.local` file in frontend root and add following:
+- `API_TOKEN` which is used for backend calls.
+- `AUTH_CLIENT_ID` given by auth provider
+- `AUTH_CLIENT_SECRET` given by auth provider
+
+Add `AUTH_SECRET` to `.env.local` manually or generate by running:
+```
+npx auth secret
+```
+
+Run the development server:
 
 ```
 npm run dev

@@ -1,6 +1,7 @@
 import logging
 
-from fastapi import APIRouter, BackgroundTasks, HTTPException, Request, status
+from app.auth import get_api_token
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Request, status
 from llama_index.core.llms import MessageRole
 
 from app.api.routers.events import EventCallbackHandler
@@ -25,6 +26,7 @@ async def chat(
     request: Request,
     data: ChatData,
     background_tasks: BackgroundTasks,
+    api_token: str = Depends(get_api_token),
 ):
     try:
         last_message_content = data.get_last_message_content()
@@ -57,6 +59,7 @@ async def chat(
 @r.post("/request")
 async def chat_request(
     data: ChatData,
+    api_token: str = Depends(get_api_token)
 ) -> Result:
     last_message_content = data.get_last_message_content()
     messages = data.get_history_messages()

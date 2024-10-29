@@ -16,7 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
 
-app = FastAPI()
+app = FastAPI(root_path="/fastapi")
 
 init_settings()
 init_observability()

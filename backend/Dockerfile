@@ -1,4 +1,4 @@
-FROM python:3.11 as build
+FROM python:3.11 AS build
 
 WORKDIR /app
 
@@ -19,7 +19,7 @@ COPY ./pyproject.toml ./poetry.lock* /app/
 RUN poetry install --no-root --no-cache --only main
 
 # ====================================
-FROM build as release
+FROM build AS release
 
 COPY . .
 

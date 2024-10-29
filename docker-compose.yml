@@ -1,0 +1,52 @@
+services:
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    networks:
+      - app-network
+    depends_on:
+      - backend
+      - frontend
+    restart: unless-stopped
+  
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    #ports:
+    #  - "8000:8000"
+    volumes:
+      - chromadb_data:/backend/chroma_db
+      - storage_data:/backend/storage
+    environment:
+      ENVIRONMENT: prod
+      ROOT_PATH: /backend
+    restart: unless-stopped
+    networks:
+      - app-network
+  
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    #ports:
+    #  - "3000:3000"
+    restart: unless-stopped
+    env_file:
+      - ./frontend/.env
+      - ./frontend/.env.local
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  chromadb_data:
+    driver: local
+  storage_data:
+    driver: local

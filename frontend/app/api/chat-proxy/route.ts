@@ -3,12 +3,12 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   const { messages } = await request.json();
 
-  if (!process.env.NEXT_PUBLIC_CHAT_API || !process.env.API_TOKEN) {
+  if (!process.env.CHAT_API || !process.env.API_TOKEN) {
     return NextResponse.json({ message: 'Server configuration error' }, { status: 500 });
   }
 
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_CHAT_API}`, {
+    const response = await fetch(`${process.env.CHAT_API}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

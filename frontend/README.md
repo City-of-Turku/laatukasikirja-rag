@@ -16,8 +16,11 @@ npm run generate
 
 Create a `.env.local` file in frontend root and add following:
 - `API_TOKEN` which is used for backend calls.
-- `AUTH_CLIENT_ID` given by auth provider
-- `AUTH_CLIENT_SECRET` given by auth provider
+- `AUTH_CLIENT_ID` given by auth provider.
+- `AUTH_CLIENT_SECRET` given by auth provider.
+- `AUTH_TRUST_HOST` set to `"true"`, see more info: https://authjs.dev/reference/core/errors#untrustedhost.
+- `NEXT_PUBLIC_CHAT_API` which is backend chat API's URL when accessing from browser.
+- `CHAT_API` URL for Nextjs backend to access chat API. Set to `http://backend:8000/api/chat` when using root level `docker-compose.yml`.
 
 Add `AUTH_SECRET` to `.env.local` manually or generate by running:
 ```

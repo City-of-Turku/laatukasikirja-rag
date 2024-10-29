@@ -29,22 +29,24 @@ python main.py
 
 The example provides two different API endpoints:
 
-1. `/api/chat` - a streaming chat endpoint
-2. `/api/chat/request` - a non-streaming chat endpoint
+1. `fastapi/api/chat` - a streaming chat endpoint
+2. `fastapi/api/chat/request` - a non-streaming chat endpoint
 
 You can test the streaming endpoint with the following curl request:
 
 ```
-curl --location 'localhost:8000/api/chat' \
+curl --location 'localhost:8000/fastapi/api/chat' \
 --header 'Content-Type: application/json' \
+--header 'X-API-Token: your_api_token' \
 --data '{ "messages": [{ "role": "user", "content": "Hello" }] }'
 ```
 
 And for the non-streaming endpoint run:
 
 ```
-curl --location 'localhost:8000/api/chat/request' \
+curl --location 'localhost:8000/fastapi/api/chat/request' \
 --header 'Content-Type: application/json' \
+--header 'X-API-Token: your_api_token' \
 --data '{ "messages": [{ "role": "user", "content": "Hello" }] }'
 ```
 

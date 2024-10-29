@@ -23,7 +23,6 @@ services:
       - storage_data:/backend/storage
     environment:
       ENVIRONMENT: prod
-      ROOT_PATH: /backend
     restart: unless-stopped
     networks:
       - app-network

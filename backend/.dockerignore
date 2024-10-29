@@ -1,5 +1,3 @@
-__pycache__
 storage
-.env
 output
 storage_vol

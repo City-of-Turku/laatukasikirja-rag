@@ -19,6 +19,7 @@ Create a `.env.local` file in frontend root and add following:
 - `AUTH_CLIENT_ID` given by auth provider.
 - `AUTH_CLIENT_SECRET` given by auth provider.
 - `AUTH_TRUST_HOST` set to `"true"`, see more info: https://authjs.dev/reference/core/errors#untrustedhost.
+- `AUTH_URL` set to `yourbaseurl/api/auth`, is used for redirecting from auth provider.
 - `NEXT_PUBLIC_CHAT_API` which is backend chat API's URL when accessing from browser.
 - `CHAT_API` URL for Nextjs backend to access chat API. Set to `http://backend:8000/api/chat` when using root level `docker-compose.yml`.
 

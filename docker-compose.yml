@@ -19,8 +19,7 @@ services:
     #ports:
     #  - "8000:8000"
     volumes:
-      - chromadb_data:/backend/chroma_db
-      - storage_data:/backend/storage
+      - ./backend/storage_vol:/app/storage
     environment:
       ENVIRONMENT: prod
     restart: unless-stopped
@@ -45,7 +44,5 @@ networks:
     driver: bridge
 
 volumes:
-  chromadb_data:
-    driver: local
-  storage_data:
+  storage:
     driver: local

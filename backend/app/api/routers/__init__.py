@@ -7,7 +7,6 @@ from .upload import file_upload_router  # noqa: F401
 api_router = APIRouter()
 api_router.include_router(chat_router, prefix="/chat")
 api_router.include_router(config_router, prefix="/chat/config")
-api_router.include_router(file_upload_router, prefix="/chat/upload")
 
 # Dynamically adding additional routers if they exist
 try:

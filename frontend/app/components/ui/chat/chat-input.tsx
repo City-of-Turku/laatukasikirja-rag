@@ -116,14 +116,6 @@ export default function ChatInput(
           onChange={props.handleInputChange}
           onKeyDown={handleKeyDown}
         />
-        <FileUploader
-          onFileUpload={handleUploadFile}
-          onFileError={props.onFileError}
-          config={{
-            allowedExtensions: ALLOWED_EXTENSIONS,
-            disabled: props.isLoading,
-          }}
-        />
         {process.env.NEXT_PUBLIC_USE_LLAMACLOUD === "true" &&
           props.setRequestData && (
             <LlamaCloudSelector setRequestData={props.setRequestData} />

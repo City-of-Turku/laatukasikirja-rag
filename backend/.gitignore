@@ -3,3 +3,5 @@ storage
 .env
 output
 storage_vol
+chroma_db
+chroma_db_vol

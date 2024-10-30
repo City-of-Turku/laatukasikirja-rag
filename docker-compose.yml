@@ -20,6 +20,7 @@ services:
     #  - "8000:8000"
     volumes:
       - ./backend/storage_vol:/app/storage
+      - ./backend/chroma_db_vol:/app/chroma_db
     environment:
       ENVIRONMENT: prod
     restart: unless-stopped
@@ -45,4 +46,6 @@ networks:
 
 volumes:
   storage:
+    driver: local
+  chroma_db:
     driver: local

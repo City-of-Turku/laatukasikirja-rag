@@ -1,8 +1,13 @@
-FROM python:3.11 AS build
+FROM python:3.11-slim AS build
 
 WORKDIR /app
 
 ENV PYTHONPATH=/app
+
+# Install curl
+RUN apt-get update && \
+    apt-get install -y curl && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install Poetry
 RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=/opt/poetry python && \

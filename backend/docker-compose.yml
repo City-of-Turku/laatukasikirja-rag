@@ -6,6 +6,8 @@ services:
     volumes:
       - chromadb_data:/backend/chroma_db
       - storage_data:/backend/storage
+      - ./data:/app/data
+
     environment:
       ENVIRONMENT: prod
 

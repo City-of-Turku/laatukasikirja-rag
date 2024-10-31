@@ -21,6 +21,7 @@ services:
     volumes:
       - ./backend/storage_vol:/app/storage
       - ./backend/chroma_db_vol:/app/chroma_db
+      - ./backend/data:/app/data
     environment:
       ENVIRONMENT: prod
     restart: unless-stopped

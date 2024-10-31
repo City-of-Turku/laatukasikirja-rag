@@ -3,6 +3,7 @@ output
 storage_vol
 chroma_db
 chroma_db_vol
+data
 
 # Ignore Python cache and compiled files
 __pycache__/

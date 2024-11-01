@@ -52,7 +52,7 @@ def get_file_documents(config: FileLoaderConfig):
             DATA_DIR,
             recursive=True,
             filename_as_id=True,
-            raise_on_error=True,
+            raise_on_error=False, # if faulty file, skips instead of erroring
             file_extractor=file_extractor,
         )
         return reader.load_data()

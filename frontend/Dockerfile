@@ -25,6 +25,10 @@ COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV production
 
+# Accept NODE_OPTIONS as build argument
+ARG NODE_OPTIONS
+ENV NODE_OPTIONS=${NODE_OPTIONS}
+
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
   elif [ -f package-lock.json ]; then npm run build; \

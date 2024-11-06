@@ -6,6 +6,8 @@ import { SignOut } from "./auth/signout-button"
 
 export default async function Header() {
   const session = await auth()
+  const useTunnistamo = process.env.USE_TUNNISTAMO
+  const authBtn = session ? <SignOut/> : <SignIn/>
 
   return (
     <header className="bg-background border-b">
@@ -20,7 +22,7 @@ export default async function Header() {
               priority
             />
           </div>
-          {session ? <SignOut/> : <SignIn/>}
+          {useTunnistamo && authBtn}
         </div>
       </div>
     </header>

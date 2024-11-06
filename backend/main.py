@@ -27,7 +27,7 @@ logger = logging.getLogger("uvicorn")
 if environment == "prod":
     logger.info("Running in production mode.")    
     allow_origins = [o.strip() for o in os.getenv("CORS_ORIGIN_WHITELIST", "").split(",")]
-    print(allow_origins*10)
+
     app.add_middleware(
         CORSMiddleware,
         allow_origins=allow_origins,

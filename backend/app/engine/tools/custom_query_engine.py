@@ -7,6 +7,11 @@ from llama_index.core.evaluation import FaithfulnessEvaluator
 from llama_index.core.settings import Settings
 
 
+
+class CustomToolOutput(ToolOutput):
+    passing: bool
+
+    
 class CustomQueryEngineTool(QueryEngineTool):
     async def acall(self, *args: Any, **kwargs: Any) -> ToolOutput:
         query_str = self._get_query_str(*args, **kwargs)
@@ -24,11 +29,12 @@ class CustomQueryEngineTool(QueryEngineTool):
             if not eval_result.passing:
                 result = os.getenv("NOT_IN_CONTEXT_PHRASE", "NOT IN CONTEXT")
 
-            return ToolOutput(
+            return CustomToolOutput(
                 content=result,
                 tool_name=self.metadata.name,
                 raw_input={"input": query_str if eval_result.passing else result},
                 raw_output=response,
+                passing=eval_result.passing
             )
         finally:
             loop.close()

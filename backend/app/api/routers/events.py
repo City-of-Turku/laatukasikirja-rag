@@ -66,13 +66,14 @@ class CallbackEvent(BaseModel):
                         output = source.raw_output
                     else:
                         output = source.content
-
+                   
                     return {
                         "type": "tools",
                         "data": {
                             "toolOutput": {
                                 "output": output,
                                 "isError": source.is_error,
+                                "passing": getattr(source,"passing", False)                                
                             },
                             "toolCall": {
                                 "id": None,  # There is no tool id in the ToolOutput

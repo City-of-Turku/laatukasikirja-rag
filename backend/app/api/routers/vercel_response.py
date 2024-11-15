@@ -91,20 +91,17 @@ class VercelStreamResponse(StreamingResponse):
 
         # Once we got a source node, start a background task to download the files (if needed)
         cls._process_response_nodes(result.source_nodes, background_tasks)
-
-        # Yield the source nodes
+      
+        passings = [source.passing for source in result.sources]
+        nodes =  [SourceNodes.from_source_node(node).model_dump() for node in result.source_nodes] if any(passings) else []
         yield cls.convert_data(
             {
                 "type": "sources",
                 "data": {
-                    "nodes": [
-                        SourceNodes.from_source_node(node).model_dump()
-                        for node in result.source_nodes
-                    ]
+                    "nodes": nodes                    
                 },
             }
         )
-
         final_response = ""
         async for token in result.async_response_gen():
             final_response += token

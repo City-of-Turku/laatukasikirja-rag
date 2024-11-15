@@ -1,10 +1,16 @@
+# Laatukäsikirja backend
+
 This is a [LlamaIndex](https://www.llamaindex.ai/) project using [FastAPI](https://fastapi.tiangolo.com/) bootstrapped with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama).
+
+Requirements:
+
+- Python version 3.11 or 3.12
 
 ## Getting Started
 
 First, setup the environment with poetry:
 
-> **_Note:_** This step is not needed if you are using the dev-container.
+> **_Note:_** This step is not needed if you are using the dev-container (not tested with this project).
 
 ```
 poetry install
@@ -15,7 +21,14 @@ Then check the parameters that have been pre-configured in the `.env` file in th
 
 If you are using any tools or data sources, you can update their config files in the `config` folder.
 
-Second, generate the embeddings of the documents in the `./data` directory (if this folder exists - otherwise, skip this step):
+Add folder `storage` in backend root and add following files with content `{}`
+
+- docstore.json
+- graph_store.json
+- image__vector_store.json
+- index_store.json
+
+Generate the embeddings of the documents in the `./data` directory (if this folder exists - otherwise, skip this step):
 
 ```
 poetry run generate

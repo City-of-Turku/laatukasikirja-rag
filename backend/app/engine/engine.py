@@ -39,4 +39,5 @@ def get_chat_engine(filters=None, params=None, event_handlers=None, **kwargs):
         system_prompt=system_prompt,
         callback_manager=callback_manager,
         verbose=True,
+        default_tool_choice="query_engine_tool",
     )

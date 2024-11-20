@@ -7,8 +7,8 @@ import Header from "./components/header";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Laatukäsikirja-Bot",
-  description: "Turun Ammatti-instituutin chatbot",
+  title: "Rakennussääntelyn AI-apuri",
+  description: "Turun kaupungin rakennussääntelyn chatbot",
 };
 
 export default function RootLayout({

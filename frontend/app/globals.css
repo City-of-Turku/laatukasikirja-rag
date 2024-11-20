@@ -96,7 +96,7 @@
   }
 
   .background-color {
-    background-color: rgba(235, 17, 50, 0.9);
+    background-color: lightblue;
   }
 
   @keyframes fadeIn {

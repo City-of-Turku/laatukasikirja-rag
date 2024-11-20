@@ -30,6 +30,7 @@ Create a `.env.local` file in frontend root and add following:
 - `AUTH_URL` set to `yourbaseurl/api/auth`, is used for redirecting from auth provider.
 - `NEXT_PUBLIC_CHAT_API` which is backend chat API's URL when accessing from browser.
 - `CHAT_API` URL for Nextjs backend to access chat API. Set to `http://backend:8000/api/chat` when using root level `docker-compose.yml`.
+- `NEXT_PUBLIC_NODE_SCORE_THRESHOLD` AI answer's source score threshold 0.1 - 1 (optional).
 
 Add `AUTH_SECRET` to `.env.local` manually or generate by running:
 

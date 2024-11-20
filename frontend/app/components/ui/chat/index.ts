@@ -91,7 +91,8 @@ export type MessageAnnotation = {
   data: AnnotationData;
 };
 
-const NODE_SCORE_THRESHOLD = 0.25;
+const ENV_THRESHOLD = process.env.NEXT_PUBLIC_NODE_SCORE_THRESHOLD
+const NODE_SCORE_THRESHOLD = ENV_THRESHOLD ? parseFloat(ENV_THRESHOLD) : 0.25;
 
 export function getAnnotationData<T extends AnnotationData>(
   annotations: MessageAnnotation[],

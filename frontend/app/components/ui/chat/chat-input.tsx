@@ -106,6 +106,9 @@ export default function ChatInput(
         </div>
       )}
       <div className="flex w-full items-start justify-between gap-4 ">
+        <label htmlFor="chat-input" className="sr-only">
+          Kirjoita kysymys
+        </label>
         <Textarea
           id="chat-input"
           // autoFocus

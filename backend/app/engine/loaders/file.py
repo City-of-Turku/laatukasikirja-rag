@@ -8,6 +8,13 @@ from app.config import DATA_DIR
 
 logger = logging.getLogger(__name__)
 
+FAST_MODE = "fast"
+PREMIUM_MODE = "premium"
+CONTINUOUS_MODE = "continuous"
+GPT4O_MODE = "gpt4o"
+VENDOR_MULTIMODAL="vendor_multimodal"
+
+MODE_OPTIONS=[FAST_MODE, PREMIUM_MODE, CONTINUOUS_MODE, GPT4O_MODE, VENDOR_MULTIMODAL]
 
 class FileLoaderConfig(BaseModel):
     use_llama_parse: bool = False
@@ -19,11 +26,38 @@ def llama_parse_parser():
             "LLAMA_CLOUD_API_KEY environment variable is not set. "
             "Please set it in .env file or in your shell environment then run again!"
         )
+    
+    modes = {k: False for k in MODE_OPTIONS}
+    for mode_env in [m.strip().lower() for m in os.getenv("LLAMA_PARSE_MODES","").split(",")]:
+        for mode in MODE_OPTIONS:
+            if mode_env == mode:
+                modes[mode] = True
+                break
+   
+    if modes[GPT4O_MODE]:
+        if os.getenv("GPT4O_API_KEY") is None:
+            raise ValueError(
+                "GTP4O_API_KEY environment variable is not set, required in when running Llama parse in gpt4o mode. "
+                "Please set it in .env file or in your shell environment then run again!"
+            )
+
     parser = LlamaParse(
-        result_type="markdown",
+        result_type=os.getenv("LLAMA_PARSE_RESULT_TYPE", "markdown"),
         verbose=True,
         language="en",
         ignore_errors=False,
+        premium_mode=modes[PREMIUM_MODE],
+        fast_mode=modes[FAST_MODE],
+        continuous_mode=modes[CONTINUOUS_MODE],
+        gpt4o_mode=modes[GPT4O_MODE],
+        gpt4o_api_key=os.getenv("GPT4O_API_KEY"),
+        use_vendor_multimodal_model=modes[VENDOR_MULTIMODAL],
+        vendor_multimodal_api_key=os.getenv("VENDOR_MULTIMODAL_API_KEY"),
+        vendor_multimodal_model_name=os.getenv("VENDOR_MULTIMODAL_MODEL_NAME"),
+        azure_openai_deployment_name=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"),
+        azure_openai_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+        azure_openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+        azure_openai_key=os.getenv("AZURE_OPENAI_API_KEY"),
     )
     return parser
 

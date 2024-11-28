@@ -30,6 +30,12 @@ Add folder `storage` in backend root and add following files with content `{}`
 
 Generate the embeddings of the documents in the `./data` directory (if this folder exists - otherwise, skip this step):
 
+### LlamaParse
+To use LlamaParse set `use_llama_parse` to `true` in `loaders.yaml` and configure `LLAMA_CLOUD_API_KEY` and optionally `LLAMA_PARSE_MODES`, `GPT4O_API_KEY` and `LLAMA_PARSE_RESULT_TYPE` in the `.env` file.  
+For `vendor_multimodal` mode the variables `VENDOR_MULTIMODAL_API_KEY` and `VENDOR_MULTIMODAL_MODEL_NAME` must be set in the `.env` file. 
+#### Azure
+To use Azure, set mode to `vendor_multimodal` in the `env` file and set the following variables `AZURE_OPENAI_EMBEDDING_DEPLOYMENT`, `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_VERSION` and `AZURE_OPENAI_API_KEY`. Note that using Azure will exclude other modes.
+
 ```
 poetry run generate
 ```

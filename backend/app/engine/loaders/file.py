@@ -40,7 +40,7 @@ def llama_parse_parser():
                 "GTP4O_API_KEY environment variable is not set, required in when running Llama parse in gpt4o mode. "
                 "Please set it in .env file or in your shell environment then run again!"
             )
-    breakpoint()
+
     parser = LlamaParse(
         result_type=os.getenv("LLAMA_PARSE_RESULT_TYPE", "markdown"),
         verbose=True,

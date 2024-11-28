@@ -54,6 +54,10 @@ def llama_parse_parser():
         use_vendor_multimodal_model=modes[VENDOR_MULTIMODAL],
         vendor_multimodal_api_key=os.getenv("VENDOR_MULTIMODAL_API_KEY"),
         vendor_multimodal_model_name=os.getenv("VENDOR_MULTIMODAL_MODEL_NAME"),
+        azure_openai_deployment_name=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"),
+        azure_openai_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+        azure_openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+        azure_openai_key=os.getenv("AZURE_OPENAI_API_KEY"),
     )
     return parser
 

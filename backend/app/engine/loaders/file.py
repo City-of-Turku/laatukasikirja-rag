@@ -41,7 +41,7 @@ def llama_parse_parser():
             )
   
     parser = LlamaParse(
-        result_type="markdown",
+        result_type=os.getenv("LLAMA_PARSE_RESULT_TYPE", "markdown"),
         verbose=True,
         language="en",
         ignore_errors=False,

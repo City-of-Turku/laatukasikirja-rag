@@ -31,7 +31,7 @@ Add folder `storage` in backend root and add following files with content `{}`
 Generate the embeddings of the documents in the `./data` directory (if this folder exists - otherwise, skip this step):
 
 ### LlamaParse
-To use LlamaParse set `use_llama_parse` to `true` in `loaders.yaml` and configure `LLAMA_CLOUD_API_KEY` and optionally `LLAMA_PARSE_MODE` and `GPT4O_API_KEY` in the `.env` file.
+To use LlamaParse set `use_llama_parse` to `true` in `loaders.yaml` and configure `LLAMA_CLOUD_API_KEY` and optionally `LLAMA_PARSE_MODE`, `GPT4O_API_KEY` and `LLAMA_PARSE_RESULT_TYPE` in the `.env` file.
 
 ```
 poetry run generate

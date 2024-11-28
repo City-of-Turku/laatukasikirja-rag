@@ -12,8 +12,9 @@ FAST_MODE = "fast"
 PREMIUM_MODE = "premium"
 CONTINUOUS_MODE = "continuous"
 GPT4O_MODE = "gpt4o"
-MODE_OPTIONS=[FAST_MODE, PREMIUM_MODE, CONTINUOUS_MODE, GPT4O_MODE]
+VENDOR_MULTIMODAL="vendor_multimodal"
 
+MODE_OPTIONS=[FAST_MODE, PREMIUM_MODE, CONTINUOUS_MODE, GPT4O_MODE, VENDOR_MULTIMODAL]
 
 class FileLoaderConfig(BaseModel):
     use_llama_parse: bool = False
@@ -39,7 +40,7 @@ def llama_parse_parser():
                 "GTP4O_API_KEY environment variable is not set, required in when running Llama parse in gpt4o mode. "
                 "Please set it in .env file or in your shell environment then run again!"
             )
-
+    
     parser = LlamaParse(
         result_type=os.getenv("LLAMA_PARSE_RESULT_TYPE", "markdown"),
         verbose=True,
@@ -49,8 +50,10 @@ def llama_parse_parser():
         fast_mode=modes[FAST_MODE],
         continuous_mode=modes[CONTINUOUS_MODE],
         gpt4o_mode=modes[GPT4O_MODE],
-        gpt4o_api_key=os.getenv("GPT4O_API_KEY")
-
+        gpt4o_api_key=os.getenv("GPT4O_API_KEY"),
+        use_vendor_multimodal_model=modes[VENDOR_MULTIMODAL],
+        vendor_multimodal_api_key=os.getenv("VENDOR_MULTIMODAL_API_KEY"),
+        vendor_multimodal_model_name=os.getenv("VENDOR_MULTIMODAL_MODEL_NAME"),
     )
     return parser
 

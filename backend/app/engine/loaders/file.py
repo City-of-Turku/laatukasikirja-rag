@@ -26,20 +26,20 @@ def llama_parse_parser():
             "Please set it in .env file or in your shell environment then run again!"
         )
     
-    mode_env = os.getenv("LLAMA_PARSE_MODE", "").lower()   
     modes = {k: False for k in MODE_OPTIONS}
-    for mode in MODE_OPTIONS:
-        if mode_env in mode:
-            modes[mode] = True
-            break
-    
+    for mode_env in [m.strip() for m in os.getenv("LLAMA_PARSE_MODES","").split(",")]:
+        for mode in MODE_OPTIONS:
+            if mode_env in mode:
+                modes[mode] = True
+                break
+   
     if modes[GPT4O_MODE]:
         if os.getenv("GPT4O_API_KEY") is None:
             raise ValueError(
                 "GTP4O_API_KEY environment variable is not set, required in when running Llama parse in gpt4o mode. "
                 "Please set it in .env file or in your shell environment then run again!"
             )
-  
+
     parser = LlamaParse(
         result_type=os.getenv("LLAMA_PARSE_RESULT_TYPE", "markdown"),
         verbose=True,
@@ -50,6 +50,7 @@ def llama_parse_parser():
         continuous_mode=modes[CONTINUOUS_MODE],
         gpt4o_mode=modes[GPT4O_MODE],
         gpt4o_api_key=os.getenv("GPT4O_API_KEY")
+
     )
     return parser
 

@@ -58,6 +58,7 @@ def llama_parse_parser():
         azure_openai_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
         azure_openai_api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
         azure_openai_key=os.getenv("AZURE_OPENAI_API_KEY"),
+        num_workers=os.getenv("LLAMA_PARSE_NUM_WORKERS", 9),
     )
     return parser
 

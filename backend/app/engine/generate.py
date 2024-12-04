@@ -62,7 +62,9 @@ def persist_storage(docstore, vector_store):
 def generate_datasource():
     init_settings()
     logger.info("Generate index for the provided data")
-
+    logger.info(f"LLAMA_PARSE_MODES: {os.getenv("LLAMA_PARSE_MODES", "accurate")}")
+    logger.info(f"LLAMA_PARSE_RESULT_TYPE: {os.getenv("LLAMA_PARSE_RESULT_TYPE", "markdown")}")
+    
     # Get the stores and documents or create new ones
     documents = get_documents()
     # Set private=false to mark the document as public (required for filtering)

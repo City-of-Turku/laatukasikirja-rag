@@ -26,6 +26,7 @@ Create a `.env.local` file in frontend root and add following:
 - `USE_TUNNISTAMO` if set, users are required to authenticate before being able to use AI-chat.
 - `AUTH_CLIENT_ID` given by auth provider (optional, only used when auth provider in use like Tunnistamo).
 - `AUTH_CLIENT_SECRET` given by auth provider (optional, only used when auth provider in use like Tunnistamo).
+- `AUTH_CLIENT_ISSUER` auth provider URL for authentication (optional, testitunnistamo is used as default).
 - `AUTH_TRUST_HOST` set to `"true"`, see more info: <https://authjs.dev/reference/core/errors#untrustedhost>.
 - `AUTH_URL` set to `yourbaseurl/api/auth`, is used for redirecting from auth provider.
 - `NEXT_PUBLIC_CHAT_API` which is backend chat API's URL when accessing from browser.

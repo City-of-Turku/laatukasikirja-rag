@@ -15,6 +15,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from fastapi.staticfiles import StaticFiles
+from llama_index.core.constants import DEFAULT_TEMPERATURE, DEFAULT_EMBEDDING_DIM
+
 
 app = FastAPI(root_path="/fastapi")
 
@@ -49,6 +51,14 @@ else:
     @app.get("/")
     async def redirect_to_docs():
         return RedirectResponse(url="/docs")
+    
+logger.info(f"MODEL: {os.getenv("MODEL")}")
+logger.info(f"EMBEDDING_MODEL: {os.getenv("EMBEDDING_MODEL")}")
+logger.info(f"EMBEDDING_DIM: {os.getenv("EMBEDDING_DIM", DEFAULT_EMBEDDING_DIM)}")
+logger.info(f"LLM_TEMPERATURE: {os.getenv("LLM_TEMPERATURE", DEFAULT_TEMPERATURE)}")
+logger.info(f"TOP_K: {os.getenv("TOP_K", 0)}")
+logger.info(f"LLAMA_PARSE_MODES: {os.getenv("LLAMA_PARSE_MODES", "accurate")}")
+logger.info(f"LLAMA_PARSE_RESULT_TYPE: {os.getenv("LLAMA_PARSE_RESULT_TYPE", "markdown")}")
 
 
 def mount_static_files(directory, path):

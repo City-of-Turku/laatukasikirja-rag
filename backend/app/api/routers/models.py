@@ -104,6 +104,10 @@ class Message(BaseModel):
     annotations: List[Annotation] | None = None
 
 
+class DataFilesData(BaseModel):
+    files: List[str]
+
+
 class ChatData(BaseModel):
     messages: List[Message]
     data: Any = None

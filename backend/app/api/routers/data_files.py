@@ -54,6 +54,4 @@ def data_files(api_token: str = Depends(get_api_token)) -> DataFilesData:
         return {"files": files}   
     else:
         raise_error( f"Failed to decode JSON from '{json_file}'")
-  
-
-   
+     

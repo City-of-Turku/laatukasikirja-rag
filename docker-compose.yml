@@ -11,7 +11,7 @@ services:
       - backend
       - frontend
     restart: unless-stopped
-  
+
   backend:
     build:
       context: ./backend
@@ -22,12 +22,13 @@ services:
       - ./backend/storage_vol:/app/storage
       - ./backend/chroma_db_vol:/app/chroma_db
       - ./backend/data:/app/data
+      - ./backend/change_log_vol:/app/app/change_log
     environment:
       ENVIRONMENT: prod
     restart: unless-stopped
     networks:
       - app-network
-  
+
   frontend:
     build:
       context: ./frontend

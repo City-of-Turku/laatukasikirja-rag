@@ -32,6 +32,8 @@ Create a `.env.local` file in frontend root and add following:
 - `NEXT_PUBLIC_CHAT_API` which is backend chat API's URL when accessing from browser.
 - `CHAT_API` URL for Nextjs backend to access chat API. Set to `http://backend:8000/api/chat` when using root level `docker-compose.yml`.
 - `NEXT_PUBLIC_NODE_SCORE_THRESHOLD` AI answer's source score threshold 0.1 - 1 (optional).
+- `USE_CHANGELOG` if set, change logs are usable on UI.
+- `CHANGE_LOG_API` URL for Nextjs backend to access change log API. Set to `http://backend:8000/api/change_log` when using root level `docker-compose.yml`.
 
 Add `AUTH_SECRET` to `.env.local` manually or generate by running:
 

@@ -15,7 +15,7 @@ logger = logging.getLogger("uvicorn")
 
 
 @lru_cache
-def get_data_files(json_file: Path) -> dict | json.JSONDecodeError:
+def get_data_files(json_file: Path) -> dict | json.JSONDecodeError | KeyError:
     try:
         with open(json_file, "r") as f:
             json_data = json.load(f)

@@ -76,8 +76,10 @@ def create_change_log_entry(entry: ChangeLogEntry, api_token: str = Depends(get_
     change_log = load_change_log()
     
     # Use and increment the next available ID
+ 
     new_entry = entry.model_dump()
-    new_entry['id'] = change_log["next_id"]
+    new_entry["id"] = change_log["next_id"]
+    new_entry["timestamp"] = datetime.now().isoformat()
     change_log["next_id"] += 1
     
     change_log["entries"].append(new_entry)

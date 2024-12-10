@@ -7,7 +7,7 @@ from functools import lru_cache
 from fastapi import APIRouter, Depends,  HTTPException, status
 
 from app.auth import get_api_token
-from app.api.routers.models import DataFilesData
+from app.api.routers.models import DataFilesData, SourceNodes
 
 data_files_router = r = APIRouter()
 
@@ -23,7 +23,17 @@ def get_data_files(json_file: Path) -> dict | json.JSONDecodeError:
         return e    
     try:
         docstore_data = json_data["docstore/data"]
-        return list(set([docstore_data[key]["__data__"]["metadata"]["file_name"] for key in docstore_data.keys()]))
+        ret_list = []
+        file_names_added = []
+        for key in list(set(docstore_data.keys())):
+            file_name = docstore_data[key]["__data__"]["metadata"]["file_name"]
+            if file_name in file_names_added:
+                continue
+            metadata = {"file_name": file_name, "file_path": docstore_data[key]["__data__"]["metadata"]["file_path"]}
+            url = SourceNodes.get_url_from_metadata(metadata)
+            ret_list.append({"file_name": file_name, "url":url})
+            file_names_added.append(file_name) 
+        return ret_list
     except KeyError as e:
         return e
 

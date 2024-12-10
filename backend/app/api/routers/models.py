@@ -105,7 +105,7 @@ class Message(BaseModel):
 
 
 class DataFilesData(BaseModel):
-    files: List[str]
+    files: List[dict[str, str]]
 
 
 class ChatData(BaseModel):

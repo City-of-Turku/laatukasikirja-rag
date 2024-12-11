@@ -65,7 +65,7 @@ def get_change_log(api_token: str = Depends(get_api_token)):
 @r.post("/change_log")
 def create_change_log_entry(entry: ChangeLogEntry, api_token: str = Depends(get_api_token)):
     """
-    Create a new change log entry with auto-incremented ID.
+    Create a new change log entry with auto-incremented ID. Note, 'id' and 'timestamp' will be excluded.
     
     Args:
         entry (ChangeLogEntry): Change log entry to add
@@ -76,8 +76,7 @@ def create_change_log_entry(entry: ChangeLogEntry, api_token: str = Depends(get_
     change_log = load_change_log()
     
     # Use and increment the next available ID
- 
-    new_entry = entry.model_dump()
+    new_entry = entry.model_dump(exclude={'id', 'timestamp'})
     new_entry["id"] = change_log["next_id"]
     new_entry["timestamp"] = datetime.now().isoformat()
     change_log["next_id"] += 1

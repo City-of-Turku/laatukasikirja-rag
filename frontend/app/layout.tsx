@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Header from "./components/header";
+import { SITE_TEXTS } from "./constants/texts";
 import "./globals.css";
 import "./markdown.css";
-import Header from "./components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Rakennussääntelyn AI-apuri",
-  description: "Turun kaupungin rakennussääntelyn chatbot",
+  title: SITE_TEXTS.meta.title,
+  description: SITE_TEXTS.meta.description,
 };
 
 export default function RootLayout({
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="fi">
       <body className={inter.className + " background-color"}>
-        <Header/>
+        <Header />
         {children}
       </body>
     </html>

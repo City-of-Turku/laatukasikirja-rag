@@ -17,7 +17,7 @@ function ChangeEntry({ entry }: ChangeEntryProps) {
   });
 
   return (
-    <div className="text-white">
+    <div className="main-text-color">
       <p className="text-lg">{entryDatetime}</p>
       <ul className="list-disc">
         {changes.map((change, index) => (

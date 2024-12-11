@@ -99,6 +99,10 @@
     background-color: rgba(235, 17, 50, 0.9);
   }
 
+  .main-text-color {
+    color: rgb(255, 255, 255);
+  }
+
   @keyframes fadeIn {
     0% {
       opacity: 0;

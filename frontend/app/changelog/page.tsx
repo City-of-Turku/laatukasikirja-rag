@@ -21,7 +21,7 @@ async function ChangeLog() {
   return (
     <main className="w-screen flex justify-center items-center">
       <div className="py-10 space-y-2 lg:space-y-10 w-[90%] lg:w-[60rem]">
-        <h1 className="text-4xl font-bold text-white">Muutoshistoria</h1>
+        <h1 className="text-4xl font-bold main-text-color">Muutoshistoria</h1>
         {change_log.map((entry: any) => (
           <ChangeEntry key={entry.id} entry={entry} />
         ))}

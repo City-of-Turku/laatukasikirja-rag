@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import ChangeEntry from "../components/change-entry";
+import { SITE_TEXTS } from "../constants/texts";
 
 async function ChangeLog() {
   const useChangeLog = process.env.USE_CHANGELOG;
@@ -31,7 +32,7 @@ async function ChangeLog() {
 }
 
 export const metadata = {
-  title: "Laatukäsikirja-Bot | Muutoshistoria",
+  title: SITE_TEXTS.changeLogPage.metaTitle,
 };
 
 export default ChangeLog;

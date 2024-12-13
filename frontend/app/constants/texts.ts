@@ -11,4 +11,7 @@ export const SITE_TEXTS = {
   changeLogPage: {
     metaTitle: "Laatukäsikirja-Bot | Muutoshistoria",
   },
+  sourceFilesPage: {
+    metaTitle: "Laatukäsikirja-Bot | Lähdetiedostot",
+  },
 };

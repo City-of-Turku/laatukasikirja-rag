@@ -9,6 +9,7 @@ export default async function Header() {
   const session = await auth();
   const useTunnistamo = process.env.USE_TUNNISTAMO;
   const useChangeLog = process.env.USE_CHANGELOG;
+  const useSourceFiles = process.env.USE_SOURCE_FILES;
   const authBtn = session ? <SignOut /> : <SignIn />;
 
   return (
@@ -30,6 +31,7 @@ export default async function Header() {
             authBtn={authBtn}
             useTunnistamo={useTunnistamo}
             useChangeLog={useChangeLog}
+            useSourceFiles={useSourceFiles}
           />
         </div>
       </div>

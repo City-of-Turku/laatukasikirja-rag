@@ -8,12 +8,14 @@ interface HeaderMenuProps {
   authBtn: React.ReactNode;
   useTunnistamo: string | undefined;
   useChangeLog: string | undefined;
+  useSourceFiles: string | undefined;
 }
 
 export default function HeaderMenu({
   authBtn,
   useTunnistamo,
   useChangeLog,
+  useSourceFiles,
 }: HeaderMenuProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,12 +23,17 @@ export default function HeaderMenu({
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const anyNavItems = useChangeLog || useTunnistamo;
+  const anyNavItems = useChangeLog || useTunnistamo || useSourceFiles;
 
   return (
     <>
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-4">
+        {useSourceFiles && (
+          <Link href="sourcefiles" className="px-3 py-2 text-center w-full">
+            Lähdetiedostot
+          </Link>
+        )}
         {useChangeLog && (
           <Link href="changelog" className="px-3 py-2 text-center w-full">
             Muutoshistoria
@@ -54,6 +61,15 @@ export default function HeaderMenu({
         <div className="fixed inset-x-0 top-16 z-50 md:hidden">
           <div className="bg-white shadow-lg">
             <nav className="flex flex-col items-center space-y-4 py-4 border-t">
+              {useSourceFiles && (
+                <Link
+                  onClick={toggleMenu}
+                  href="sourcefiles"
+                  className="px-3 py-2 text-center w-full"
+                >
+                  Lähdetiedostot
+                </Link>
+              )}
               {useChangeLog && (
                 <Link
                   onClick={toggleMenu}

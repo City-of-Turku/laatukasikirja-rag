@@ -12,6 +12,6 @@ export const SITE_TEXTS = {
     metaTitle: "Rakennussääntelyn AI-apuri | Muutoshistoria",
   },
   sourceFilesPage: {
-    metaTitle: "Laatukäsikirja-Bot | Lähdetiedostot",
+    metaTitle: "Rakennussääntelyn AI-apuri | Lähdetiedostot",
   },
 };

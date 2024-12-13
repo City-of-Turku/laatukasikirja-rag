@@ -34,6 +34,8 @@ Create a `.env.local` file in frontend root and add following:
 - `NEXT_PUBLIC_NODE_SCORE_THRESHOLD` AI answer's source score threshold 0.1 - 1 (optional).
 - `USE_CHANGELOG` if set, change logs are usable on UI.
 - `CHANGE_LOG_API` URL for Nextjs backend to access change log API. Set to `http://backend:8000/api/change_log` when using root level `docker-compose.yml`.
+- `USE_SOURCE_FILES` if set, source files are usable on UI.
+- `SOURCE_FILES_API` URL for Nextjs backend to access source files API. Set to `http://backend:8000/api/data_files` when using root level `docker-compose.yml`.
 
 Add `AUTH_SECRET` to `.env.local` manually or generate by running:
 

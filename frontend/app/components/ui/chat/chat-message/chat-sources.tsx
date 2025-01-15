@@ -67,7 +67,9 @@ function SourceInfo({ node, index }: { node?: SourceNode; index: number }) {
           className="hover:text-white hover:bg-primary"
         />
       </HoverCardTrigger>
-      <HoverCardContent className={isWide ? "w-[1000px]" : "w-[400px]"}>
+      <HoverCardContent
+        className={isWide ? "w-[1000px] max-w-[calc(100vw-2rem)]" : "w-[400px]"}
+      >
         <NodeInfo nodeInfo={node} />
       </HoverCardContent>
     </HoverCard>

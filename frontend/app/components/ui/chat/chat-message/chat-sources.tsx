@@ -50,6 +50,9 @@ export function ChatSources({ data }: { data: SourceData }) {
 
 function SourceInfo({ node, index }: { node?: SourceNode; index: number }) {
   if (!node) return <SourceNumberButton index={index} />;
+
+  const isWide = process.env.NEXT_PUBLIC_USE_LARGE_SOURCE_CARD ? true : false;
+
   return (
     <HoverCard>
       <HoverCardTrigger
@@ -64,7 +67,7 @@ function SourceInfo({ node, index }: { node?: SourceNode; index: number }) {
           className="hover:text-white hover:bg-primary"
         />
       </HoverCardTrigger>
-      <HoverCardContent className="w-[400px]">
+      <HoverCardContent className={isWide ? "w-[1000px]" : "w-[400px]"}>
         <NodeInfo nodeInfo={node} />
       </HoverCardContent>
     </HoverCard>
@@ -138,11 +141,13 @@ function NodeInfo({ nodeInfo }: { nodeInfo: SourceNode }) {
     (nodeInfo.metadata?.page_label as number) ??
     null;
 
+  const isTall = process.env.NEXT_PUBLIC_USE_LARGE_SOURCE_CARD ? true : false;
+
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
         <span className="font-semibold">
-          {pageNumber ? `On page ${pageNumber}:` : "Node content:"}
+          {pageNumber ? `Sivulla ${pageNumber}:` : "Sisältö:"}
         </span>
         {nodeInfo.text && (
           <Button
@@ -164,7 +169,13 @@ function NodeInfo({ nodeInfo }: { nodeInfo: SourceNode }) {
       </div>
 
       {nodeInfo.text && (
-        <pre className="max-h-[200px] overflow-auto whitespace-pre-line">
+        <pre
+          className={
+            isTall
+              ? "max-h-[300px] overflow-auto whitespace-pre-line"
+              : "max-h-[200px] overflow-auto whitespace-pre-line"
+          }
+        >
           &ldquo;{nodeInfo.text}&rdquo;
         </pre>
       )}

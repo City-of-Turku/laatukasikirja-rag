@@ -2,3 +2,10 @@ __pycache__
 storage
 .env
 output
+storage_vol
+chroma_db
+chroma_db_vol
+data/*
+!data/.gitkeep
+app/change_log/change_log.json
+change_log_vol

@@ -1,4 +1,10 @@
+# Laatukäsikirja frontend
+
 This is a [LlamaIndex](https://www.llamaindex.ai/) project using [Next.js](https://nextjs.org/) bootstrapped with [`create-llama`](https://github.com/run-llama/LlamaIndexTS/tree/main/packages/create-llama).
+
+Requirements:
+
+- Nodejs version 20
 
 ## Getting Started
 
@@ -14,7 +20,31 @@ Second, generate the embeddings of the documents in the `./data` directory (if t
 npm run generate
 ```
 
-Third, run the development server:
+Create a `.env.local` file in frontend root and add following:
+
+- `API_TOKEN` which is used for backend calls.
+- `USE_TUNNISTAMO` if set, users are required to authenticate before being able to use AI-chat.
+- `AUTH_CLIENT_ID` given by auth provider (optional, only used when auth provider in use like Tunnistamo).
+- `AUTH_CLIENT_SECRET` given by auth provider (optional, only used when auth provider in use like Tunnistamo).
+- `AUTH_CLIENT_ISSUER` auth provider URL for authentication (optional, testitunnistamo is used as default).
+- `AUTH_TRUST_HOST` set to `"true"`, see more info: <https://authjs.dev/reference/core/errors#untrustedhost>.
+- `AUTH_URL` set to `yourbaseurl/api/auth`, is used for redirecting from auth provider.
+- `NEXT_PUBLIC_CHAT_API` which is backend chat API's URL when accessing from browser.
+- `CHAT_API` URL for Nextjs backend to access chat API. Set to `http://backend:8000/api/chat` when using root level `docker-compose.yml`.
+- `NEXT_PUBLIC_NODE_SCORE_THRESHOLD` AI answer's source score threshold 0.1 - 1 (optional).
+- `USE_CHANGELOG` if set, change logs are usable on UI.
+- `CHANGE_LOG_API` URL for Nextjs backend to access change log API. Set to `http://backend:8000/api/change_log` when using root level `docker-compose.yml`.
+- `USE_SOURCE_FILES` if set, source files are usable on UI.
+- `SOURCE_FILES_API` URL for Nextjs backend to access source files API. Set to `http://backend:8000/api/data_files` when using root level `docker-compose.yml`.
+- `NEXT_PUBLIC_USE_LARGE_SOURCE_CARD` if set, AI answer source popups are larger.
+
+Add `AUTH_SECRET` to `.env.local` manually or generate by running:
+
+```
+npx auth secret
+```
+
+Run the development server:
 
 ```
 npm run dev

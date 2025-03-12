@@ -2,6 +2,7 @@ import os
 from typing import List
 
 from app.engine.index import IndexConfig, get_index
+from app.engine.tools.custom_query_engine import CustomQueryEngineTool
 from app.engine.tools import ToolFactory
 from llama_index.core.agent import AgentRunner
 from llama_index.core.callbacks import CallbackManager
@@ -23,7 +24,9 @@ def get_chat_engine(filters=None, params=None, event_handlers=None, **kwargs):
         query_engine = index.as_query_engine(
             filters=filters, **({"similarity_top_k": top_k} if top_k != 0 else {})
         )
-        query_engine_tool = QueryEngineTool.from_defaults(query_engine=query_engine)
+        use_custom_qe = os.getenv("USE_CUSTOM_QUERY_ENGINE")
+        query_engine_tool = CustomQueryEngineTool.from_defaults(query_engine=query_engine) if use_custom_qe \
+            else QueryEngineTool.from_defaults(query_engine=query_engine)
         tools.append(query_engine_tool)
 
     # Add additional tools
@@ -36,4 +39,5 @@ def get_chat_engine(filters=None, params=None, event_handlers=None, **kwargs):
         system_prompt=system_prompt,
         callback_manager=callback_manager,
         verbose=True,
+        default_tool_choice="query_engine_tool",
     )

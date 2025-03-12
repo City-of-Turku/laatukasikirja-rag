@@ -14,13 +14,13 @@ export default function ChatActions(
       {props.showStop && (
         <Button variant="outline" size="sm" onClick={props.stop}>
           <PauseCircle className="mr-2 h-4 w-4" />
-          Stop generating
+          Pysäytä luonti
         </Button>
       )}
       {props.showReload && (
         <Button variant="outline" size="sm" onClick={props.reload}>
           <RefreshCw className="mr-2 h-4 w-4" />
-          Regenerate
+          Luo uudestaan
         </Button>
       )}
     </div>

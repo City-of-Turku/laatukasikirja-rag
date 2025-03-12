@@ -106,30 +106,25 @@ export default function ChatInput(
         </div>
       )}
       <div className="flex w-full items-start justify-between gap-4 ">
+        <label htmlFor="chat-input" className="sr-only">
+          Kirjoita kysymys
+        </label>
         <Textarea
           id="chat-input"
-          autoFocus
+          // autoFocus
           name="message"
-          placeholder="Type a message"
+          placeholder="Kirjoita kysymys..."
           className="flex-1 min-h-0 h-[40px]"
           value={props.input}
           onChange={props.handleInputChange}
           onKeyDown={handleKeyDown}
-        />
-        <FileUploader
-          onFileUpload={handleUploadFile}
-          onFileError={props.onFileError}
-          config={{
-            allowedExtensions: ALLOWED_EXTENSIONS,
-            disabled: props.isLoading,
-          }}
         />
         {process.env.NEXT_PUBLIC_USE_LLAMACLOUD === "true" &&
           props.setRequestData && (
             <LlamaCloudSelector setRequestData={props.setRequestData} />
           )}
         <Button type="submit" disabled={props.isLoading || !props.input.trim()}>
-          Send message
+          Lähetä kysymys
         </Button>
       </div>
     </form>

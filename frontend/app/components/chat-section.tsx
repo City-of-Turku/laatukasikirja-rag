@@ -3,10 +3,8 @@
 import { useChat } from "ai/react";
 import { useState } from "react";
 import { ChatInput, ChatMessages } from "./ui/chat";
-import { useClientConfig } from "./ui/chat/hooks/use-config";
 
 export default function ChatSection() {
-  const { backend } = useClientConfig();
   const [requestData, setRequestData] = useState<any>();
   const {
     messages,
@@ -20,7 +18,7 @@ export default function ChatSection() {
     setInput,
   } = useChat({
     body: { data: requestData },
-    api: `${backend}/api/chat`,
+    api: "/api/chat-proxy",
     headers: {
       "Content-Type": "application/json", // using JSON because of vercel/ai 2.2.26
     },

@@ -1,0 +1,53 @@
+storage
+output
+storage_vol
+chroma_db
+chroma_db_vol
+data
+change_log_vol
+
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore virtual environments
+venv/
+.venv/
+env/
+.conda/
+
+# Ignore local IDE settings and logs
+*.swp
+*.swo
+.vscode/
+.idea/
+*.log
+
+# Ignore Docker and Git files
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker-compose*.yml
+.git/
+.gitignore
+.gitattributes
+
+# Ignore test files and directories (optional)
+tests/
+*.test.*
+
+# Ignore coverage and pytest cache
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/
+.tox/
+.mypy_cache/
+
+# Ignore Jupyter notebook checkpoints (if using)
+.ipynb_checkpoints/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
